@@ -5,8 +5,8 @@
  */
 class ChangeHandler {
     
-    constructor(amountDue) {
-        this.amountDue = amountDue;
+    constructor(data) {
+        this.amountDue = data.amountDue;
         this.cashTendered = 0;
     }
 
@@ -15,12 +15,24 @@ class ChangeHandler {
      * @param {string} type either quarter, dime, nickel, or penny
      */
     insertCoin(type) {
+        if (type === "quarter"){
+            this.cashTendered += 25; 
+        } else if (type === "dime") {
+            this.cashTendered += 10; 
+        } else if (type === "nickel") {
+            this.cashTendered += 5;
+        } else if (type === "penny") {
+            this.cashTendered += 1
+        } else {
+            this.cashTendered += 0;
+        }
     }
 
     /**
      * Returns true if enough coins have been inserted to at least meet the amountDue
      */
     isPaymentSufficient() {
+
     }
 
     giveChange() {
